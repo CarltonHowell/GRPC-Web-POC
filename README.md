@@ -1,4 +1,5 @@
 # GRPC-Web POC Demo
+This repository demonstrates GPRC-Web integration with Typescript.
 
 ## Setup Guide
 
