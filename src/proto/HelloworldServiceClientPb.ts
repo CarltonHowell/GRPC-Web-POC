@@ -6,27 +6,28 @@
 
 // GENERATED CODE -- DO NOT EDIT!
 
+
 /* eslint-disable */
 // @ts-nocheck
 
-import * as grpcWeb from "grpc-web";
 
-import * as helloworld_pb from "./helloworld_pb";
+import * as grpcWeb from 'grpc-web';
+
+import * as helloworld_pb from './helloworld_pb';
+
 
 export class GreeterClient {
   client_: grpcWeb.AbstractClientBase;
   hostname_: string;
-  credentials_: null | { [index: string]: string };
-  options_: null | { [index: string]: any };
+  credentials_: null | { [index: string]: string; };
+  options_: null | { [index: string]: any; };
 
-  constructor(
-    hostname: string,
-    credentials?: null | { [index: string]: string },
-    options?: null | { [index: string]: any }
-  ) {
+  constructor (hostname: string,
+               credentials?: null | { [index: string]: string; },
+               options?: null | { [index: string]: any; }) {
     if (!options) options = {};
     if (!credentials) credentials = {};
-    options["format"] = "text";
+    options['format'] = 'text';
 
     this.client_ = new grpcWeb.GrpcWebClientBase(options);
     this.hostname_ = hostname;
@@ -44,35 +45,34 @@ export class GreeterClient {
 
   sayHello(
     request: helloworld_pb.HelloRequest,
-    metadata: grpcWeb.Metadata | null
-  ): Promise<helloworld_pb.HelloReply>;
+    metadata: grpcWeb.Metadata | null): Promise<helloworld_pb.HelloReply>;
 
   sayHello(
     request: helloworld_pb.HelloRequest,
     metadata: grpcWeb.Metadata | null,
-    callback: (err: grpcWeb.Error, response: helloworld_pb.HelloReply) => void
-  ): grpcWeb.ClientReadableStream<helloworld_pb.HelloReply>;
+    callback: (err: grpcWeb.Error,
+               response: helloworld_pb.HelloReply) => void): grpcWeb.ClientReadableStream<helloworld_pb.HelloReply>;
 
   sayHello(
     request: helloworld_pb.HelloRequest,
     metadata: grpcWeb.Metadata | null,
-    callback?: (err: grpcWeb.Error, response: helloworld_pb.HelloReply) => void
-  ) {
+    callback?: (err: grpcWeb.Error,
+               response: helloworld_pb.HelloReply) => void) {
     if (callback !== undefined) {
       return this.client_.rpcCall(
-        this.hostname_ + "/helloworld.Greeter/SayHello",
+        this.hostname_ +
+          '/helloworld.Greeter/SayHello',
         request,
         metadata || {},
         this.methodInfoSayHello,
-        callback
-      );
+        callback);
     }
     return this.client_.unaryCall(
-      this.hostname_ + "/helloworld.Greeter/SayHello",
-      request,
-      metadata || {},
-      this.methodInfoSayHello
-    );
+    this.hostname_ +
+      '/helloworld.Greeter/SayHello',
+    request,
+    metadata || {},
+    this.methodInfoSayHello);
   }
 
   methodInfoSayRepeatHello = new grpcWeb.AbstractClientBase.MethodInfo(
@@ -85,13 +85,14 @@ export class GreeterClient {
 
   sayRepeatHello(
     request: helloworld_pb.RepeatHelloRequest,
-    metadata?: grpcWeb.Metadata
-  ) {
+    metadata?: grpcWeb.Metadata) {
     return this.client_.serverStreaming(
-      this.hostname_ + "/helloworld.Greeter/SayRepeatHello",
+      this.hostname_ +
+        '/helloworld.Greeter/SayRepeatHello',
       request,
       metadata || {},
-      this.methodInfoSayRepeatHello
-    );
+      this.methodInfoSayRepeatHello);
   }
+
 }
+
