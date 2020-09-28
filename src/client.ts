@@ -16,7 +16,7 @@ enableDevTools([client]);
 var request = new HelloRequest();
 request.setName("World");
 
-client.sayHello(request, {}, (err, response: HelloReply) => {
+client.sayHello(request, {}, (err, response) => {
   if (err) {
     console.log(
       `Unexpected error for sayHello: code = ${err.code}` +
