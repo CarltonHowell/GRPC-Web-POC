@@ -72,7 +72,7 @@ Hello! World
 Install the [GRPC-Web Chrome Extenstion](https://chrome.google.com/webstore/detail/grpc-web-developer-tools/ddamlpimmiapbcopeoifjfmoabdbfbjj?hl=en) to debug GRPC network requests.
 
 
-## Updated the proto file
+## Updating the proto definition
 After making changes to the `helloworld.proto` file, run the following command:
 ```sh
 $ yarn build
