@@ -1,26 +1,27 @@
-var PROTO_PATH = __dirname + '/helloworld.proto';
+var PROTO_PATH = __dirname + "/helloworld.proto";
 
-var async = require('async');
-var grpc = require('@grpc/grpc-js');
-var protoLoader = require('@grpc/proto-loader');
-var packageDefinition = protoLoader.loadSync(
-    PROTO_PATH,
-    {keepCase: true,
-     longs: String,
-     enums: String,
-     defaults: true,
-     oneofs: true
-    });
+var async = require("async");
+var grpc = require("@grpc/grpc-js");
+var protoLoader = require("@grpc/proto-loader");
+var packageDefinition = protoLoader.loadSync(PROTO_PATH, {
+  keepCase: true,
+  longs: String,
+  enums: String,
+  defaults: true,
+  oneofs: true,
+});
 var protoDescriptor = grpc.loadPackageDefinition(packageDefinition);
 var helloworld = protoDescriptor.helloworld;
-var client = new helloworld.Greeter('localhost:9090',
-                                    grpc.credentials.createInsecure());
+var client = new helloworld.Greeter(
+  "localhost:9090",
+  grpc.credentials.createInsecure()
+);
 
 /**
  * @param {function():?} callback
  */
 function runSayHello(callback) {
-  client.sayHello({name: 'John'}, {}, (err, response) => {
+  client.sayHello({ name: "John" }, {}, (err, response) => {
     console.log(response.message);
     callback();
   });
@@ -30,24 +31,20 @@ function runSayHello(callback) {
  * @param {function():?} callback
  */
 function runSayRepeatHello(callback) {
-  var stream = client.sayRepeatHello({name: 'John', count: 5}, {});
-  stream.on('data', (response) => {
+  var stream = client.sayRepeatHello({ name: "John", count: 5 }, {});
+  stream.on("data", (response) => {
     console.log(response.message);
   });
-  stream.on('end', () => {
+  stream.on("end", () => {
     callback();
   });
 }
-
 
 /**
  * Run all of the demos in order
  */
 function main() {
-  async.series([
-    runSayHello,
-    runSayRepeatHello,
-  ]);
+  async.series([runSayHello, runSayRepeatHello]);
 }
 
 if (require.main === module) {
