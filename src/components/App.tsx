@@ -20,22 +20,26 @@ function App() {
   const [text, setText] = useState<string>('');
 
   useEffect(() => {
-    var request = new HelloRequest();
-    request.setName("World");
-    
-    client.sayHello(request, {}, (err, response) => {
-      if (err) {
-        console.log(
-          `Unexpected error for sayHello: code = ${err.code}` +
-            `, message = "${err.message}"`
-        );
-      } else {
-        setText(response.getMessage());
-        setLoading(false);
-      }
-    });
-
-
+    // Wait for 1 second before running the request
+    setTimeout(() => {
+      // Set up the request
+      var request = new HelloRequest();
+      request.setName("World");
+      
+      // Send the request
+      client.sayHello(request, {}, (err, response) => {
+        if (err) {
+          console.log(
+            `Unexpected error for sayHello: code = ${err.code}` +
+              `, message = "${err.message}"`
+          );
+        } else {
+          // Update the React text and loading state
+          setText(response.getMessage());
+          setLoading(false);
+        }
+      });
+    }, 1000);
   }, []);
 
   return (

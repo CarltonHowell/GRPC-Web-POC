@@ -6,17 +6,17 @@
   "devDependencies": {
     "@grpc/grpc-js": "~1.0.5",
     "@grpc/proto-loader": "~0.5.4",
-    "@testing-library/dom": "^7.24.3",
     "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
+    "@testing-library/react": "10.0.4",
     "@testing-library/user-event": "^7.1.2",
-    "@types/jest": "^24.0.0",
+    "@types/jest": "^25.1.4",
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
     "async": "~1.5.2",
     "google-protobuf": "~3.12.0",
     "grpc-web": "~1.2.1",
+    "jest-environment-jsdom-sixteen": "^1.0.3",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.3",
@@ -25,8 +25,8 @@
   "scripts": {
     "build-proto-js": "protoc -I=. helloworld.proto --js_out=import_style=commonjs,binary:./src/proto --grpc-web_out=import_style=typescript,mode=grpcwebtext:./src/proto",
     "build": "yarn build-proto-js; ./build.sh",
-    "test": "react-scripts test",
-    "start": "PORT=8081 react-scripts start"
+    "test": "react-scripts test --env=jest-environment-jsdom-sixteen",
+    "start": "yarn build; PORT=8081 react-scripts start"
   },
   "eslintConfig": {
     "extends": "react-app"
