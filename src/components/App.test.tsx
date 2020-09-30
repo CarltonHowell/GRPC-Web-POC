@@ -1,9 +1,14 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen, waitForElementToBeRemoved  } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+test('Calls GRPC service and renders response message', async () => {
+  // Render the React application
+  render(<App />);
+  
+  // Wait for the loader to be removed
+  await waitForElementToBeRemoved(() => screen.findByTestId('loader'));
+
+  // Assert - search the DOM for the rendered response message
+  expect(screen.getByText(/Hello! World!/)).toBeInTheDocument();
 });
