@@ -10,5 +10,5 @@ test('Calls GRPC service and renders response message', async () => {
   await waitForElementToBeRemoved(() => screen.findByTestId('loader'));
 
   // Assert - search the DOM for the rendered response message
-  expect(screen.getByText(/Hello! World!/)).toBeInTheDocument();
+  expect(screen.getByText(/Hello! World!/)).not.toBeNull();
 });

@@ -79,8 +79,8 @@ $ yarn build
 ```
 This will generate new GRPC js client files in the `src/proto` directory.
 
-## Prettier
-Prettier is configured to ensure consistent styling on all working files. To prettify all working files run:
+## Testing
+Jest and React Testing Library is used for unit testing. To run all tests use:
 ```sh
-$ yarn prettify
+$ yarn test
 ```
